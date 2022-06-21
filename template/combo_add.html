@@ -1,0 +1,14 @@
+{% if Combo %}
+<form action="" method="post">
+    {% csrf_token %}
+    <input type="hidden" name ="pk" value="{{Combo.id}}">
+    <input type="text" name="title" placeholder="combo_name" value="{{Combo.name}}">
+    <input type="submit" value="Update">
+</form>
+{% else %}
+<form action="" method="post">
+    {% csrf_token %}
+    <input type="text" name="title" placeholder="combo_name" >
+    <input type="submit" value="Create">
+</form>
+{% endif  %}

@@ -1,0 +1,4 @@
+{% for item in Fast_food %} 
+{{item.name}} <a href="{% url 'fast-food-add'  %}">Add  </a> | <a href="{% url 'fast-food-update' item.id %}">Update</a>
+<a href="{% url 'fast-food-delete' item.id %}">Delete</a> <br>     
+{% endfor %}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fast-food-branch</title>
+    <style>
+        .head1 {
+            font-size:40px;
+            color:#009900;
+            font-weight:bold;
+        }
+        .head2 {
+            font-size:17px;
+            margin-left:10px;
+            margin-bottom:15px;
+        }
+        body {
+            margin: 0 auto;
+            background-position:center;
+            background-size: contain;
+        }
+      
+        .menu { 
+            position: sticky;
+            top: 0;
+            background-color: #009900;
+            padding:10px 0px 10px 0px;
+            color:white;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        .menu a {
+            float: left;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 20px;
+        }
+        .menu-log {
+            right: auto;
+            float: right;
+        }
+        footer {
+            width: 100%;
+            bottom: 0px;
+            background-color: #000;
+            color: #fff;
+            position: absolute;
+            padding-top:20px;
+            padding-bottom:50px;
+            text-align:center;
+            font-size:30px;
+            font-weight:bold;
+        }
+        .body_sec {
+            margin-left:20px;
+            
+        }  
+    </style>
+
+</head>
+
+<body>
+      
+    <header>
+        <div class="head1">Fast Food Branch</div>
+        <div class="head2">Welcome to my website </div>
+    </header>
+      
+    <nav class="menu">
+        <a href="{% url 'fast-food-class'  %}"><span>RESTAURANT</span></a>
+        <a href="{% url 'product'  %}">MENU</a>
+        <a href="{% url 'resurs'  %}">RESURS</a>
+        <a href="{% url 'orders'  %}">ORDERS</a>
+            
+        <div class="menu-log">
+            <a href="{% url 'login' %}">LOGIN</a>
+            <a href="{% url 'register' %}">REGISTRATSIYA</a>
+        </div>
+      </nav>
+
+    
+    <main class = "body_sec">
+        <section id="Content">
+            <h3>Search section</h3>
+            <form action="" method="get">
+                <input type="text" name = "title" placeholder="title">
+                <input type="number" name = "rating" placeholder="rating">
+                <input type="submit" value="Search">
+            </form>
+            <p><a href="{% url 'fast-food-add-class' %}">Add</a></p>
+            <div class="objects_part">
+                <p>{% for item in fast_food %}
+                    {{item.name}} {{item.rating}} <span id="url"><a href="{% url 'fast-food-update-class' item.id %}">Update</a>
+                        <a href="{% url 'fast-food-delete-class' item.id %}">Delete</a></span> </p>     
+                {% endfor %}
+            </div>
+        </section>
+      </main>
+     
+    <footer>FAST FOOD BRANCH</footer>
+</body>
+</html>

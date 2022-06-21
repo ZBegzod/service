@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Menu</title>
+        <style>
+            header{
+                background-color: #f8fbff; 
+                color: black; 
+                text-align: center;
+                height: 60px;
+                padding: 40px;  
+            }   
+            nav{
+                line-height: normal;
+                background-color: #eeeeee;
+                height: 280px;
+                width: 100px;
+                float: left;
+                padding: 40px;
+            }
+            section{
+                width: 650px;
+                float: left;
+                padding: 50px;
+            }
+            footer{
+                background-color: #f8ab33;
+                color: white;
+                clear: both;
+                text-align: center;
+                padding: 20px;                
+            }
+           
+        </style>
+    </head>
+    <body>
+        <article>
+            <header>
+                <h1>MENU SERVICE</h1>
+                <div class="menu-log">
+                    <a href="{% url 'login' %}">LOGIN</a><br>
+                    <a href="{% url 'register' %}">REGISTRATSIYA</a>
+                </div>
+            </header>
+            <nav>
+                <h1><a href="{% url 'fast-food-class'  %}"><span>RESTAURANT</span></a></h1> 
+                <h1><a href="{% url 'product'  %}">MENU</a><br></h1>
+                <h1><a href="{% url 'resurs'  %}">RESURS</a> <br></h1>
+                <h1><a href="{% url 'orders'  %}">ORDERS</a></h1>
+            </nav>
+            <main>
+                <div id="url"> <a href="{% url 'product-add' %}">Add</a></div> 
+                <section>
+                   
+                    <div>
+                        <form action="" method="get">
+                            <input type="text" name = 'combo' placeholder="combo_name">
+                            <input type="text" name = 'resurs' placeholder="resurs_name">
+                            <input type="number" step="any" name = 'product_size' placeholder="product_size">
+                            <input type="submit" value="Search">
+                        </form>
+                    </div>
+
+                    <div>
+                        <p>{% for item in product %}
+                            {{item.combo.name}} {{item.resurs.name}} {{item.product_size}} <span id="url"><a href="{% url 'product-update' item.id %}">Update</a>
+                                <a href="{% url 'product-delete' item.id %}">Delete</a></span> </p>     
+                        {% endfor %}
+                    </div>
+                </section>
+            </main>
+
+            <footer>
+                MEHU PAGE
+            </footer>
+        </article>
+        
+    </body>
+</html>

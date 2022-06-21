@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            #header {
+                background-color:black;
+                color:white;
+                text-align:center;
+                padding:5px;
+            }
+            #nav {
+                line-height:30px;
+                background-color:#eeeeee;
+                height:300px;
+                width:100px;
+                float:left;
+                padding:100px;
+            }
+            #section {
+                width:800px;
+                float:left;
+                padding:100px;
+            }
+            #footer {
+                background-color:black;
+                color:white;
+                clear:both;
+                text-align:center;
+                padding:5px;
+            }
+            #objects{
+                text-align: center;
+                width: 1000;
+                
+            }
+            .reg{
+                text-align: center;
+            }
+            </style>        
+    </head>
+    <body>
+        <div id="header">
+        <h1>ORDERS SERVICE</h1>
+        <a class="reg" href="{% url 'login' %}">LOGIN</a><br>
+        <a class="reg" href="{% url 'register' %}">REGISTRATSIYA</a>
+    </div>
+        <div id="nav">
+        <a href="{% url 'fast-food-class' %}">RESTAURANT</a><br>
+        <a href="{% url 'product' %}">MENU</a><br>
+        <a href="{% url 'resurs' %}">RESURS</a><br>
+        <a href="{% url 'orders' %}">ORDERS</a><br>
+        </div>
+
+        <div id="section">
+        <h1>Search section</h1>
+        <form action="" method="get">
+            <input type="text" name = 'fast_food' placeholder="fast_food_name">
+            <input type="text" name = 'combo_name' placeholder="combo_name">
+            <input type="text" name = 'resurs_name' placeholder="resurs_name">
+            <input type="number" step="any" name = 'resurs_size' placeholder="resurs_size">
+            <input type= "submit" value="Search">
+        </form>
+        <a href="{% url 'orders-add' %}">add</a>
+        </div>
+        <div id="objects">
+            {% for item in orders %} 
+            {{item.fast_food_branch_id.name}} | {{item.product_id.combo.name}} | {{item.product_id.resurs.name}} | {{item.product_id.product_size}} |{{item.date_time}}  <a href="{% url 'orders-update' item.id %}">Update</a>
+            <a href="{% url 'orders-delete' item.id %}">Delete</a> <br>     
+            {% endfor %} 
+        </div>
+        <div id="footer">
+        ORDERS PAGE
+        </div>
+        </body>    
+</html>
