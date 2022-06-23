@@ -252,6 +252,7 @@ def user_register_view(request):
             return render(request, 'user-register.html', context={'form':form})
 
 def user_login_view(request):
+
     if request.method == 'GET':
         form = UserLoginform()
         return render(request, 'user-login.html', {'form':form})

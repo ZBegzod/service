@@ -43,8 +43,3 @@ class Orders(models.Model):
 class Order_client(models.Model):
     user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     combo = models.ForeignKey(Combo, on_delete=models.DO_NOTHING)
-    resurs = models.ForeignKey(Resurs, on_delete=models.DO_NOTHING)
-    product = models.ForeignKey(Product, on_delete=models.DO_NOTHING)
-    fast_food = models.ForeignKey(Fast_food_branch, on_delete=models.DO_NOTHING)
-    orders = models.ForeignKey(Orders, on_delete=models.DO_NOTHING)
-

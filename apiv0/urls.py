@@ -1,5 +1,6 @@
 from django.urls import include, path
 from .views import *
+from rest_framework.authtoken.views import obtain_auth_token
 
 urlpatterns = [
     path('',test_api_view),
@@ -25,4 +26,5 @@ urlpatterns = [
     path('api-view-orders/delete/<int:pk>', OrdersDelete.as_view(), name = 'orders-delete-view'),
     path('api-view/<int:pk>', combo_api_view),
     path('api-auth/', include('rest_framework.urls')),
+    path('token-auth/', obtain_auth_token)
 ]
